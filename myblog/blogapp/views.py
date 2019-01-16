@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from .models import BlogPost, Comment, User, AskPost, EmailSubscriber, SiteNews, Question, Choice
 from django.utils import timezone
 from django.views import generic
-from .shared import *
 from hitcount.views import HitCountDetailView
 from django.core.validators import validate_email
 
