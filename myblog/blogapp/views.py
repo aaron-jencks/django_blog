@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.views import generic
 from .shared import *
 from hitcount.views import HitCountDetailView
-from validate_email import validate_email
+from django.core.validators import validate_email
 
 def home(request, use_results=0):
 	latest_post_list = BlogPost.objects.order_by('-pub_date')[:5]
