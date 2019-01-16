@@ -1,0 +1,17 @@
+{% extends 'blogapp/base.html' %}
+
+{% block content %}
+<div>
+<h2 class="articleTitle" style="display: block;">Subscribe to my email notification system!</h2>
+</div>
+<form id="commentForm" action="{% url 'blogs:subscribeAction' %}" method="post">
+	{% csrf_token %}
+	{% if error_message %}
+		<p style="color: red;">{{ error_message }}</p>
+	{% endif %}
+	email address:<br>
+	<input type="text" name="email" value=""><br>
+	<br>
+	<input type="submit" value="Subscribe!">
+</form>
+{% endblock %}

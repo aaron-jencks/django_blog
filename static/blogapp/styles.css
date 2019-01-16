@@ -1,0 +1,329 @@
+* {
+	box-sizing: border-box;
+}
+
+body
+{
+	background-repeat: repeat;
+	background-position: center;
+	background-size: default;
+	padding: 0;
+	margin: 0;
+}
+
+h1.mainTitle
+{
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+h1.mainTitle a:link
+{
+	text-decoration: none;
+	color: #7ae7c7;
+}
+
+h1.mainTitle a:visited
+{
+	text-decoration: none;
+	color: #7ae7c7;
+}
+
+#row
+{
+	margin: 0;
+	display: block;
+}
+
+
+#sidebar
+{
+	border-radius: 25px;
+	border: ridge;
+	border-left: 6px solid #b7ce63;
+	background-color: #0e402d;
+	padding-bottom: 20px;
+	margin-top: 0;
+}
+
+#content
+{
+	background-color: white;
+	margin-top: 0;
+}
+
+body
+{
+
+	background-color: #85c7f2;
+
+}
+
+ul.navigationHeader {
+	border-radius: 25px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	/*width: 200px;*/
+	background-color: #0e402d;
+}
+
+ul.navigationHeader h2 {
+	color: #99b2dd;
+	text-align: center;
+	line-height: 1;
+	margin: 0;
+	padding: 0;
+}
+
+li.navigationHeader {
+	background-color: #f5f9e9;
+	border-radius: 5px;
+	margin: 3px;
+	margin-bottom: 0;
+	border-left: 6px solid #7ae7c7;
+}
+
+li.navigationHeader a {
+	display: block;
+	color: #000;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+/* Change the link color on hover */
+li.navigationHeader a:hover {
+	background-color: #555;
+	color: white;
+	border-radius: 5px;
+}
+
+a.navigationHeader {
+	background-color: #92140c;
+	border: outset;
+	color: #d7cf07;
+	display: block;
+	padding: 8px 16px;
+	text-decoration: none;
+	border-left: 6px solid #f7d002;
+	border-radius: 5px;
+	width: 300px;
+}
+
+/* Change the link color on hover */
+a:hover.navigationHeader {
+	background-color: #555;
+	color: white;
+	border-radius: 5px;
+}
+
+/* Change the link color on hover */
+a:active.navigationHeader {
+	background-color: #877377;
+	color: #49306b;
+	border-radius: 5px;
+}
+
+.column {
+	border-radius: 25px;
+	display: inline-block;
+	float: left;
+	width: 80%;
+	height: 100%;
+}
+
+.left {
+	width: 10%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+	.column {
+		width: 100%;
+	}
+}
+
+#commentsSection
+{
+	border-radius: 25px;
+	background: steelblue;
+	padding: 20px;
+	margin: 20px;
+}
+
+#commentForm
+{
+	border-radius: 25px;
+	background: white;
+	padding: 20px;
+}
+
+.articleTitle
+{
+	text-align: center;
+	color: #99b2dd;
+	border-radius: 25px;
+	background: #0e402d;
+	padding: 20px;
+	margin: 10px;
+}
+
+.datablock
+{
+	color: royalblue;
+	border-radius: 25px;
+	background: lightcyan;
+	padding: 20px;
+	margin: 10px;
+}
+
+input
+{
+	margin: 10px;
+}
+
+.comment
+{
+	border-radius: 25px;
+	background: powderblue;
+	padding: 5px;
+	margin: 10px;
+}
+
+.comment .content
+{
+	border-radius: 10px;
+	background: lightcyan;
+	padding: 5px;
+	margin: 10px;
+}
+
+.author
+{
+	border-radius: 15px;
+	background: limegreen;
+	padding: 2px;
+	margin: 2px;
+	width: 25%
+}
+
+.author p.date
+{
+	opacity: 0.4;
+	font-size: 11px;
+	margin-left: 5px;
+	color: paleturquoise;
+}
+
+.author p.authorText
+{
+	font-size: 14px;
+	margin-left: 5px;
+	padding = 0;
+	color: darkkhaki;
+	opacity: 0.7;
+}
+
+code
+{
+	display: block;
+	border-radius: 10px;
+	background: blanchedalmond;
+	padding: 20px;
+	margin: 3px;
+	overflow: hidden;
+	width: 75%;
+	min-width: 500px;
+}
+
+samp{
+	background: blanchedalmond;
+	border-radius: 2px;
+	margin: 2px;
+	padding: 5px;
+}
+
+img.profilePic
+{
+	display: inline;
+	border-radius: 50px;
+	height: 100px;
+	width: 100px;
+	padding: 0;
+	margin: 0;
+}
+
+img.smpic {
+	height: 50px;
+	width: auto;
+}
+
+ /* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 240px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

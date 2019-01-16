@@ -1,0 +1,17 @@
+{% extends "blogapp/base.html" %}
+
+{% block content %}
+<h1 class="articleTitle">New Question</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<div id="commentsSection">
+<form id="commentForm" action="{% url 'blogs:postQuestion' %}" method="post">
+	{% csrf_token %}
+	Display-name*:<br>
+	<input type="text" name="username" value=""><br>
+	Question Title*:<br>
+	<input type="text" name="questionTitle" value=""><br>
+	Question Details:<br>
+	<textarea type="text" name="questionBody" style="width: 75%;" rows="10"></textarea><br>
+	<input type="submit" value="Submit">
+</form>
+{% endblock %}

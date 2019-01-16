@@ -1,0 +1,25 @@
+{% extends "blogapp/base.html" %}
+{% load static %}
+
+{% block content %}
+<h1 class="articleTitle">About Me!</h1>
+<div id=blogPostBody style="margin: 20px">
+	<div>
+		<img src="{% static 'blogapp/about/profile.jpg' %}" class="profilePic">
+		<h2 class="articleTitle" style="display: inline;">Aaron Jencks</h2>
+	</div>
+	<div class="datablock" style="background: cornflowerblue">
+		<h2 style="display: inline; color: lightsteelblue;">Bio:</h2>
+		<p style="color: lightcyan;">Hi, I am an enthusiast in writing code, I feel like I should share my experiences with the world. I often learn about interesting things, most of the time technology related, sometimes not, while I'm working on projects. Some of them are really obscure and I feel like these things should be shown to the world.</p>
+		<h2 style="color: lightsteelblue;">Background:</h2>
+		<p style="color: lightcyan;">I am a student at the Iowa State University (Go Cyclones!), I've been writing code since I was in high school. I started writing batch in my sophomore year, creating console animations, etc... Shortly after I discovered python and began working with that, though it was short-lived. Once I got into college at Kirkwood Community College I learned C, C++, and LabVIEW. I also taught myself c#, around this time I got into machine learning, and I dove straight into it.<br>I'm still learning about machine learning, and hope to learn a lot as this website grows. When I first began learning about AI and ML, I created a toolkit in c#, thus I have little experience with python or R, or the other common machine learning languages.<br>But all that's about to change...<br></p>
+		<h2 style="color: lightsteelblue;">Social Media:</h2>
+		<p style="color: lightcyan;">Email: ajencks@iastate.edu (serious inquiries only please)<br><br>
+		<a href="https://discord.gg/mzRP2qb"><img src="{% static 'blogapp/about/app.ico' %}" class="smpic"></a>
+		<a href="github.com/iggy12345"><img src="{% static 'blogapp/about/github.png' %}" class="smpic"></a>
+		<a href="https://www.kaggle.com/iggy12345100"><img src="{% static 'blogapp/about/kaggle.png' %}" class="smpic"></a>
+		<a href="https://www.linkedin.com/in/aaron-jencks-2477b1171/"><img src="{% static 'blogapp/about/LinkedIn.png' %}" class="smpic"></a></p>
+	</div>
+</div>
+<br>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "blogapp/base.html" %}
+
+{% block content %}
+	<h2 class="articleTitle">Latest Posts!</h2>
+{% if latest_post_list %}
+	<ul style="margin: 15px">
+		{% for blogpost in latest_post_list %}
+			{% if blogpost.is_posted %}
+				<li style="list-style-type: none;"><a href="{% url 'blogs:detail' blogpost.id %}">{{ blogpost.article_title }}</a> Published on: {{blogpost.pub_date}}</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+{% else %}
+	<p style="margin: 15px">No posts are available.</p>
+{% endif %}
+{% endblock %}
