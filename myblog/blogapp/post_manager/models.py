@@ -2,8 +2,10 @@ from django.db import models
 from model_utils.models import StatusModel
 from hitcount.models import HitCount, HitCountMixin
 from model_utils import Choices
+from django.contrib.contenttypes.fields import GenericRelation
+from ..models import sqlInjectionDetect
 
-class TextPost(models.Model, HitCountMixin, StatusModel):
+class TextPost(HitCountMixin, StatusModel):
 	STATUS = Choices('published', 'draft')
 	author = models.CharField(max_length=50, blank=True, null=True)
 	text = models.TextField(blank=True)
@@ -16,7 +18,7 @@ class TextPost(models.Model, HitCountMixin, StatusModel):
 		abstract = True
 
 def isValidComment(request):
-	return request.POST['username'] != "" and request.POST['commentText'] != "" and not (sqlInjectionDetect(request.POST['username']) or sqlInjectionDetect(reques.POST['commentText']))
+	return request.POST['username'] != "" and request.POST['commentText'] != "" and not (sqlInjectionDetect(request.POST['username']) or sqlInjectionDetect(request.POST['commentText']))
 	
 def isValidPost(request):
 	return request.POST['username'] != "" and request.POST['questionTitle'] != "" and not (sqlInjectionDetect(request.POST['username']) or sqlInjectionDetect(request.POST['questionTitle']) or sqlInjectionDetect(request.POST['questionBody']))

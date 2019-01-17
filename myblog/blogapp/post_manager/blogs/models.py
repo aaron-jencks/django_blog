@@ -1,5 +1,5 @@
 from django.db import models
-from .models import TextPost
+from ..models import TextPost, emailSubList
 
 # Create your models here.
 

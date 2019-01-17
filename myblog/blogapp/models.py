@@ -30,21 +30,6 @@ def emailSubList(messageSubject, messageBody):
 		map(lambda x: x.email, EmailSubscriber.objects.all()),
 		fail_silently=True,
 		)
-
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
-
-    def __str__(self):
-        return self.question_text
-
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.choice_text
 	
 class SiteNews(models.Model):
 	tag = models.TextField()

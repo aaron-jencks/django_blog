@@ -1,6 +1,9 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
-from .models import BlogPost, Comment, User, AskPost, EmailSubscriber, SiteNews, Question, Choice
+from .post_manager.blogs.models import BlogPost, Comment
+from .post_manager.forum.models import AskPost
+from .post_manager.polls.models import Question, Choice
+from .models import User, EmailSubscriber, SiteNews
 from django.utils import timezone
 from django.views import generic
 from hitcount.views import HitCountDetailView
@@ -15,20 +18,6 @@ def home(request, use_results=0):
 		# Displays the poll results to the page
 		context['show_poll_result'] = True
 	return render(request, 'blogapp/home.html', context)
-	
-def vote(request, poll_id, choice_id):
-	try:
-		poll = Question.objects.filter(id=poll_id)[0]
-		choice = Choice.objects.filter(id=choice_id)[0]
-		if choice in poll.choice_set.all():
-			choice.votes += 1
-			choice.save()
-			return redirect('blogs:home_poll', use_results=1)
-		else:
-			return redirect('blogs:home')
-	except Exception as e:
-		print(e)
-		return redirect('blogs:home')
 		
 
 def signup(request):
