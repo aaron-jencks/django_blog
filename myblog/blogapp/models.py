@@ -1,35 +1,8 @@
 import uuid
 from django.db import models
 from django.contrib.contenttypes.fields import GenericRelation
-from hitcount.models import HitCount, HitCountMixin
 from django.utils import timezone
-from model_utils import Choices
-from model_utils.fields import StatusField
-from model_utils.models import StatusModel
 from django.db.models.query import QuerySet 
-from django.core.mail import send_mail
-
-class EmailSubscriber(models.Model):
-	email = models.EmailField(unique=True)
-	
-def emailAaron(messageBody):
-	send_mail(
-		"Aaron's Blog Notification",
-		messageBody,
-		'aaronjencks@aol.com',
-		['aaronjencks@aol.com'],
-		fail_silently=True,
-		)
-		
-def emailSubList(messageSubject, messageBody):
-	emailAaron(messageBody)
-	send_mail(
-		messageSubject,
-		messageBody,
-		'aaronjencks@aol.com',
-		map(lambda x: x.email, EmailSubscriber.objects.all()),
-		fail_silently=True,
-		)
 	
 class SiteNews(models.Model):
 	tag = models.TextField()

@@ -3,6 +3,5 @@ from .models import *
 
 admin.site.register(User)
 admin.site.register(SiteNews)
-admin.site.register(EmailSubscriber)
 
 # Register your models here.

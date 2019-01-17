@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
-from .post_manager.blogs.models import BlogPost, Comment
+from .post_manager.blogs.models import BlogPost
 from .post_manager.forum.models import AskPost
 from .post_manager.polls.models import Question, Choice
-from .models import User, EmailSubscriber, SiteNews
+from .email_manager.models import EmailSubscriber
+from .models import User, SiteNews
 from django.utils import timezone
 from django.views import generic
 from hitcount.views import HitCountDetailView
@@ -57,39 +58,9 @@ def SubscribeAction(request):
 			return render(request, 'blogapp/subscribeForm.html', {'error_message': "That email address is invalid or already taken"})
 	else:
 		return render(request, 'blogapp/subscribeForm.html', {'error_message': "That email address is invalid"})
-		
-def index(request):
-    latest_post_list = BlogPost.objects.order_by('-pub_date')[:15]
-    context = {'latest_post_list': latest_post_list}
-    return render(request, 'blogapp/index.html', context)
-
-class DetailView(HitCountDetailView):
-	model = BlogPost
-	count_hit = True
-	template_name = 'blogapp/detail.html'
 	
 def about(request):
 	return render(request, 'blogapp/about.html')
-	
-def askAaron(request):
-	latest_question_list = AskPost.objects.order_by('-pub_date')
-	return render(request, 'blogapp/forum/archive.html', {'question_list': latest_question_list})
-	
-class askAaron_detail(HitCountDetailView):
-	model = AskPost
-	count_hit = True
-	template_name = 'blogapp/forum/detail.html'
-	
-def askNew(request):
-	return render(request, 'blogapp/forum/askNew.html')
-	
-def postQuestion(request):
-	if (not isValidPost(request)):
-		return render(request, 'blogapp/forum/askNew.html', {'error_message': "Please fill in the required fields(*)"})
-	q = AskPost(author=request.POST['username'], pub_date=timezone.now(), question_title=request.POST['questionTitle'], text=request.POST['questionBody'])
-	q.save()
-	emailAaron(request.POST['username'] + " just posted a new question!")
-	return render(request, 'blogapp/forum/detail.html', {'askpost': q})
 
 def archive(request):
 	#TODO
@@ -100,28 +71,3 @@ def archive(request):
 	resultList = searchRelevantMaterial(kwdarg)
 	
 	return render(request, 'blogapp/index.html', {'latest_post_list': resultList})
-
-def comment(request, article_id):
-	selected_article = get_object_or_404(BlogPost, id=article_id)
-
-	if (not isValidComment(request)):
-		return render(request, 'blogapp/detail.html', {'blogpost': selected_article, 'comment_list': selected_article.comment_set, 'comment_error_message': "Please fill in the required fields"})
-	
-	selected_article.comment_set.create(author=request.POST['username'], pub_date=timezone.now(), text=request.POST['commentText'])
-	selected_article.save()
-
-	return render(request, 'blogapp/detail.html', {'blogpost': selected_article, 'comment_list': selected_article.comment_set})
-	
-def forumcomment(request, pk):
-	selected_article = get_object_or_404(AskPost, pk=pk)
-	
-	if (not isValidComment(request)):
-		return render(request, 'blogapp/forum/detail.html', {'askpost': selected_article, 'comment_list': selected_article.forumcomment_set, 'comment_error_message': "Please fill in the required fields"})
-	
-	selected_article.forumcomment_set.create(author=request.POST['username'], pub_date=timezone.now(), text=request.POST['commentText'])
-	selected_article.save()
-
-	return render(request, 'blogapp/forum/detail.html', {'askpost': selected_article, 'comment_list': selected_article.forumcomment_set})
-
-def reply(request, article_id, comment_id):
-    return HttpResponse("You are replying to comment %s!", comment_id)

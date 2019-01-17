@@ -1,5 +1,6 @@
 from django.db import models
 from model_utils.models import StatusModel
+from model_utils import Choices
 
 # Create your models here.
 
