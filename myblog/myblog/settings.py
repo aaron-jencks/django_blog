@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'hitcount',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +132,8 @@ STATIC_ROOT = BASE_DIR + "/static/"
 MEDIA_ROOT = '/home/iggy12345/djangoBlogProject/media'
 
 MEDIA_URL = 'files/uploads/'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # Email information
 

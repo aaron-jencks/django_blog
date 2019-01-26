@@ -20,4 +20,5 @@ from django.conf.urls import include, url
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blogapp.urls')),
+	path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]

@@ -5,9 +5,7 @@
 {% if latest_post_list %}
 	<ul style="margin: 15px">
 		{% for blogpost in latest_post_list %}
-			{% if blogpost.is_posted %}
-				<li style="list-style-type: none;"><a href="{% url 'blogs:detail' blogpost.id %}">{{ blogpost.article_title }}</a> Published on: {{blogpost.pub_date}}</li>
-			{% endif %}
+			<li style="list-style-type: none;"><a href="{% url 'blogs:detail' blogpost.id %}">{{ blogpost.article_title }}</a> Published on: {{blogpost.pub_date}}</li>
 		{% endfor %}
 	</ul>
 {% else %}
