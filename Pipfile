@@ -4,16 +4,20 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = "*"
 django = "*"
 pillow = "*"
-django-hitcount = "*"
-validate-email = "*"
-django-model-utils = "*"
+django-mptt = "*"
+django-tagging = "*"
+"beautifulsoup4" = "*"
+mots-vides = "*"
+pytz = "*"
+pyparsing = "*"
+django-xmlrpc = "*"
+django-blog-zinnia = "*"
 django-ckeditor = "*"
-django-cleanup = "*"
-django-crispy-forms = "*"
-django-js-asset = "*"
+django-hitcount = "*"
+django-model-utils = "*"
+django-polymorphic = "*"
 
 [dev-packages]
 
